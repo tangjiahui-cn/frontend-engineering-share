@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/": {
-        target: "http://www.tjh.com",
+        target: "http://www.demo.com",
         changeOrigin: true,
       }
     },

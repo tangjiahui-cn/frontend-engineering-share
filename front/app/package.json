@@ -1,0 +1,32 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "cross-env __BUILD__=1 webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.5",
+    "cross-env": "^7.0.3",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1"
+  }
+}
