@@ -50,7 +50,7 @@ module.exports = {
     library: `${packageName}-[name]`,
     libraryTarget: 'umd',
     chunkLoadingGlobal: `webpackJsonp_${packageName}`,
-    publicPath: process.env.__BUILD__ ? `/${packageName}/` : '/',
+    publicPath: process.env.__BUILD__ ? `/${packageName}/` : '/', // 这里打包后在测试环境作为入口地址路径。例如：/app
   },
   devtool: process.env.__BUILD__ ? undefined : 'source-map',
   performance: {

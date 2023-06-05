@@ -12,6 +12,8 @@ import App from "./pages/App";
 const background = window.__POWERED_BY_QIANKUN__ ? "transparent" : "whitesmoke";
 
 function getRouter(basePath: string) {
+  // @ts-ignore
+  const basename = window.__POWERED_BY_QIANKUN__ ? basePath : "/gunboss";
   return createBrowserRouter(
     [
       {
@@ -46,27 +48,29 @@ function getRouter(basePath: string) {
       },
     ],
     {
-      // @ts-ignore
-      basename: window.__POWERED_BY_QIANKUN__ ? basePath : "/",
+      basename 
     }
   );
 }
 
-let root: any;     // React应用实例
-let basePath: string; // 从主应用获取匹配路由前缀 (/console/xxx)
+let root: any;          // 应用react实例
+let basePath: string;   // 从主应用获取匹配路由的basePath
 
 export function render(props: any) {
   const dom = (props?.container || document).querySelector("#root");
   root = ReactDOM.createRoot(dom);
   root.render(<RouterProvider router={getRouter(basePath)} />);
 }
+
+// 如果是单独起的项目，直接渲染。
+// （如果是微前端调用的，则在mount生命周期里调用渲染函数）
 // @ts-ignore
 if (!window.__POWERED_BY_QIANKUN__) {
   render({});
 }
 
 export async function mount(props: any) {
-  console.log("index app mount");
+  console.log("app mount");
   props.onGlobalStateChange((state: any) => {
     basePath = state.path;
   }, true);
@@ -74,10 +78,10 @@ export async function mount(props: any) {
 }
 
 export async function unmount(props: any) {
-  console.log("index app unmount");
+  console.log("app unmount");
   root?.unmount?.();
 }
 
 export async function bootstrap() {
-  console.log("index app bootstraped");
+  console.log("app bootstraped");
 }
